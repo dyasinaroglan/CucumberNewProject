@@ -13,18 +13,17 @@ import java.util.Locale;
 
 public class ParentClass {
 
-    protected WebDriver driver;
-    protected WebDriverWait wait;
-
+    public WebDriver driver;
+    public WebDriverWait wait;
 
     public ParentClass(){
-        driver = Driver.getDrivers();
+        driver = Driver.getDriver();
         driver.manage().window().maximize();
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     }
 
-    public void goToHomePage(){
-        driver.get("http://opencart.abstracta.us/");
+    public void goToHomePage(String url){
+        driver.get(url);
     }
     public void clickTo(By locator){
         wait.until(ExpectedConditions.elementToBeClickable(locator)).click();
@@ -51,7 +50,7 @@ public class ParentClass {
     }
     public void scrollIntoView(WebElement element){
         JavascriptExecutor js = (JavascriptExecutor) driver;
-        js.executeScript("argıments[0].scrollIntoView();",element);
+        js.executeScript("arguments[0].scrollIntoView();",element);
     }
 
 }
